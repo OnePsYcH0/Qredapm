@@ -1,0 +1,44 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DATA_DIR = PROJECT_ROOT / "data"
+
+TRAIN_FILE = DATA_DIR / "train_0.json"
+TEST_FILE = DATA_DIR / "test_0.json"
+OUTPUT_DIR = PROJECT_ROOT / "outputs" / "faithful_redapm"
+
+MODEL_NAME = "bert-base-chinese"
+LABEL_COLUMN = "y2"
+INCLUDE_DISEASE_NAMES = True
+IMPLEMENTATION_NAME = "faithful_redapm"
+MODEL_VARIANT = "visit_transformer + structured_encoder + fusion_transformer"
+
+MAX_LENGTH = 96
+MAX_VISITS = 12
+BATCH_SIZE = 4
+EPOCHS = 25
+LEARNING_RATE = 1e-5
+WEIGHT_DECAY = 1e-2
+VALIDATION_RATIO = 0.1
+SEED = 42
+EARLY_STOP_PATIENCE = 5
+NUM_WORKERS = 4
+PIN_MEMORY = True
+PERSISTENT_WORKERS = True
+PREFETCH_FACTOR = 4
+AMP_ENABLED = True
+AMP_DTYPE = "bf16"
+TF32_ENABLED = True
+
+STRUCT_HIDDEN_DIM = 256
+TEXT_PROJECTION_DIM = 256
+FUSION_HIDDEN_DIM = 256
+STRUCT_NUM_LAYERS = 3
+VISIT_TRANSFORMER_LAYERS = 2
+VISIT_TRANSFORMER_HEADS = 4
+FUSION_TRANSFORMER_LAYERS = 2
+FUSION_TRANSFORMER_HEADS = 4
+DROP_OUT = 0.3
