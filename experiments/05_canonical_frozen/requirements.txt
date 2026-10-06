@@ -1,0 +1,6 @@
+# Recorded versions for these selected implementation modules.
+torch==2.9.0
+numpy==2.2.6
+scikit-learn==1.7.2
+transformers==5.4.0
+pennylane==0.42.3

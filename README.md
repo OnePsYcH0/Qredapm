@@ -20,7 +20,10 @@ experiments/03_strong_fusion/
   Structured/HGB and probability-level strong fusion scripts.
 
 experiments/04_quantum_advantage_exp9_10_11/
-  Quantum-enhanced fusion, operating-point analysis, and hard-case analysis suite.
+  Historical quantum-enhanced fusion and analysis suite.
+
+experiments/05_canonical_frozen/
+  Selected canonical model, fusion and evaluation functions, with a synthetic implementation check.
 ```
 
 ## What Is Not Included
@@ -28,6 +31,7 @@ experiments/04_quantum_advantage_exp9_10_11/
 - raw EHR data
 - `train_0.json` / `test_0.json`
 - prediction CSV files
+- result tables, registries, numerical audit outputs or split-index mappings
 - trained checkpoints or pretrained weights
 - manuscript drafts or paper-writing notes
 - server packages
@@ -35,4 +39,6 @@ experiments/04_quantum_advantage_exp9_10_11/
 
 ## Notes
 
-Paths in the scripts may need to be adjusted for a local environment. The repository is intended as a clean public code snapshot, not a full data or result release.
+Start with [the selected canonical implementation](experiments/05_canonical_frozen/README.md) for the final model components and a runnable synthetic check. Directories 01–04 preserve historical development scripts; their folder names do not establish quantum advantage or define the final evaluation protocol.
+
+Paths in historical scripts may need to be adjusted for a local environment. Clinical training data require approval from the data provider. This selected source release does not supply the inputs or artifacts needed to regenerate the paper results.

@@ -59,7 +59,23 @@ test_0.json
 **/best_model*/
 *.log
 
-# Keep paper-writing summary tables/docs trackable if desired
+# Code-only publication: exclude data and result artifacts
+*.json
+*.jsonl
+*.csv
+*.tsv
+*.parquet
+*.feather
+*.h5
+*.hdf5
+*.xlsx
+*.xls
+*.pdf
+**/predictions/
+**/splits/
+**/registry/
+**/tables/
+**/AUDIT/
 
 # OS/editor
 .DS_Store

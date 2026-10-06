@@ -8,7 +8,7 @@ Basic reference models, including structured/text baselines and CPU-only tuning 
 
 ## 02_faithful_redapm
 
-Faithful REDAPM-style multimodal reproduction code. This is the controlled reference pipeline.
+Historical REDAPM-style multimodal reproduction code. The selected final cached-input implementation is in directory 05.
 
 ## 03_strong_fusion
 
@@ -16,10 +16,14 @@ Strong classical fusion scripts based on structured predictions, text prediction
 
 ## 04_quantum_advantage_exp9_10_11
 
-The final quantum-enhanced fusion suite:
+Historical quantum-enhanced fusion development suite:
 
 - Experiment 9: validation-selected quantum-enhanced fusion
 - Experiment 10: clinical operating-point comparison
 - Experiment 11: boundary / hard-case complementarity analysis
 
 The public repository includes code only. Required prediction CSV files and private results are not redistributed.
+
+## 05_canonical_frozen
+
+Selected canonical model components, quantum transformations, fusion and evaluation functions, and a CPU synthetic implementation check. See its [README](05_canonical_frozen/README.md) for dependencies and scope. No clinical data or result artifacts are included.
