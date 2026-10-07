@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import csv
@@ -31,7 +31,7 @@ def build_text(row: dict) -> str:
     drug_names = stringify_text_field(row.get("drug_names"))
     visit_sn = stringify_text_field(row.get("visit_sn"))
     text = " ".join(part for part in [disease_names, drug_names, visit_sn] if part).strip()
-    return text or "鏃犳枃鏈褰?
+    return text or "无文本记录"
 
 
 def save_predictions_csv(path: Path, y_true, y_score, y_pred) -> None:
@@ -75,7 +75,7 @@ def update_comparison_csv(project_root: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="璁粌寮辨枃鏈?baseline锛歍F-IDF + LogisticRegression")
+    parser = argparse.ArgumentParser(description="训练弱文本 baseline：TF-IDF + LogisticRegression")
     parser.add_argument("--train-file", default=DEFAULT_TRAIN_FILE)
     parser.add_argument("--test-file", default=DEFAULT_TEST_FILE)
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
@@ -125,7 +125,7 @@ def main() -> None:
         "train_rows": len(train_rows),
         "test_rows": len(test_rows),
         "test_metrics": metrics,
-        "notes": "寮辨枃鏈熀绾匡細TF-IDF vectorizer(max_features=10000) + LogisticRegression锛屼笉浣跨敤 BERT锛屼笉浣跨敤缁撴瀯鍖栫壒寰併€?,
+        "notes": "弱文本基线：TF-IDF vectorizer(max_features=10000) + LogisticRegression，不使用 BERT，不使用结构化特征。",
     }
 
     (output_dir / "metrics.json").write_text(
@@ -140,4 +140,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

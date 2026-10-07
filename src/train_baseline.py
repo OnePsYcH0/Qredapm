@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import csv
@@ -90,16 +90,16 @@ def save_predictions_csv(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="璁粌浠呬娇鐢ㄧ粨鏋勫寲鐗瑰緛鐨?MLP baseline銆?)
-    parser.add_argument("--train-file", default=DEFAULT_TRAIN_PATH, help="璁粌闆?JSON Lines 鏂囦欢璺緞銆?)
-    parser.add_argument("--test-file", default=DEFAULT_TEST_PATH, help="娴嬭瘯闆?JSON Lines 鏂囦欢璺緞銆?)
-    parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="杈撳嚭鐩綍銆?)
-    parser.add_argument("--batch-size", type=int, default=32, help="璁粌 batch size銆?)
-    parser.add_argument("--epochs", type=int, default=20, help="璁粌杞暟銆?)
-    parser.add_argument("--learning-rate", type=float, default=1e-3, help="瀛︿範鐜囥€?)
-    parser.add_argument("--dropout", type=float, default=0.3, help="Dropout 姣斾緥銆?)
-    parser.add_argument("--val-ratio", type=float, default=0.1, help="浠庤缁冮泦鍒囧嚭鐨勯獙璇侀泦姣斾緥銆?)
-    parser.add_argument("--seed", type=int, default=42, help="闅忔満绉嶅瓙銆?)
+    parser = argparse.ArgumentParser(description="训练仅使用结构化特征的 MLP baseline。")
+    parser.add_argument("--train-file", default=DEFAULT_TRAIN_PATH, help="训练集 JSON Lines 文件路径。")
+    parser.add_argument("--test-file", default=DEFAULT_TEST_PATH, help="测试集 JSON Lines 文件路径。")
+    parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR, help="输出目录。")
+    parser.add_argument("--batch-size", type=int, default=32, help="训练 batch size。")
+    parser.add_argument("--epochs", type=int, default=20, help="训练轮数。")
+    parser.add_argument("--learning-rate", type=float, default=1e-3, help="学习率。")
+    parser.add_argument("--dropout", type=float, default=0.3, help="Dropout 比例。")
+    parser.add_argument("--val-ratio", type=float, default=0.1, help="从训练集切出的验证集比例。")
+    parser.add_argument("--seed", type=int, default=42, help="随机种子。")
     args = parser.parse_args()
 
     set_seed(args.seed)
@@ -185,7 +185,7 @@ def main() -> None:
             }
 
     if best_state is None:
-        raise RuntimeError("璁粌杩囩▼涓病鏈夊緱鍒板彲淇濆瓨鐨勬渶浣虫ā鍨嬨€?)
+        raise RuntimeError("训练过程中没有得到可保存的最佳模型。")
 
     model.load_state_dict(best_state["model_state_dict"])
     test_result = evaluate_model(model, test_loader, device)
@@ -219,4 +219,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

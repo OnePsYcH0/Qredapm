@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import csv
@@ -135,7 +135,7 @@ def build_comparison_csv(project_root: Path) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="璁粌 BERT text-only baseline銆?)
+    parser = argparse.ArgumentParser(description="训练 BERT text-only baseline。")
     parser.add_argument("--train-file", default=DEFAULT_TRAIN_FILE)
     parser.add_argument("--test-file", default=DEFAULT_TEST_FILE)
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
@@ -248,7 +248,7 @@ def main() -> None:
             }
 
     if best_state is None:
-        raise RuntimeError("璁粌杩囩▼涓病鏈夊緱鍒版渶浣虫ā鍨嬨€?)
+        raise RuntimeError("训练过程中没有得到最佳模型。")
 
     model.load_state_dict(best_state["model_state_dict"])
     test_result = evaluate_model(model, test_loader, device)
@@ -264,7 +264,7 @@ def main() -> None:
         "test_rows": len(test_rows),
         "best_validation_roc_auc": best_val_auc,
         "test_metrics": test_result["metrics"],
-        "notes": "Text-only baseline锛氫粎浣跨敤 disease_names 鍜?drug_names銆傚綋鍓嶆暟鎹腑鏈彂鐜?drug_names 瀛楁鏃讹紝浼氳嚜鍔ㄩ€€鍖栦负浠呬娇鐢?disease_names銆?,
+        "notes": "Text-only baseline：仅使用 disease_names 和 drug_names。当前数据中未发现 drug_names 字段时，会自动退化为仅使用 disease_names。",
     }
 
     (output_dir / "metrics.json").write_text(
@@ -280,4 +280,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

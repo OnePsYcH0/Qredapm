@@ -1,4 +1,4 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
 import argparse
 import csv
@@ -27,7 +27,7 @@ def save_predictions_csv(path: Path, y_true, y_score, y_pred) -> None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="璁粌涓€涓洿寮便€佹洿浼犵粺鐨勯€昏緫鍥炲綊 baseline銆?)
+    parser = argparse.ArgumentParser(description="训练一个更弱、更传统的逻辑回归 baseline。")
     parser.add_argument("--train-file", default=DEFAULT_TRAIN_FILE)
     parser.add_argument("--test-file", default=DEFAULT_TEST_FILE)
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
@@ -72,7 +72,7 @@ def main() -> None:
         "train_rows": len(train_rows),
         "test_rows": len(test_rows),
         "test_metrics": metrics,
-        "notes": "寮卞熀绾匡細浠呬娇鐢ㄧ粨鏋勫寲鐗瑰緛锛屾ā鍨嬩负鏍囧噯鍖?+ 閫昏緫鍥炲綊锛屼笉浣跨敤鏂囨湰銆佷笉浣跨敤 BERT銆佷笉浣跨敤娣卞眰绁炵粡缃戠粶銆?,
+        "notes": "弱基线：仅使用结构化特征，模型为标准化 + 逻辑回归，不使用文本、不使用 BERT、不使用深层神经网络。",
     }
 
     (output_dir / "metrics.json").write_text(
@@ -90,4 +90,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
